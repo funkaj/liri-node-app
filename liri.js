@@ -16,25 +16,40 @@ switch (liri) {
     case 'movie':
         movie();
         break
-    case 'random':
+    case 'do-what it says':
         randomTxt();
         break
     default:
-        console.log("\r\n" + "Try typing one of the following commands after 'node liri.js' : " + "\r\n" +
-            "1. tweets 'any twitter name' " + "\r\n" +
-            "2. spotify 'any song name' " + "\r\n" +
-            "3. movie 'any movie name' " + "\r\n" +
-            "4. random" + "\r\n")
+        console.log("Try typing one of the following commands after 'node liri.js' :")
+        console.log("1. tweets 'any twitter name")
+        console.log("2. spotify 'any song name")
+        console.log("3. movie 'any movie name")
+        console.log("4. random")
             
 }
 
 //functions 
 //twitter
 function tweets() {
-    let client = new twitter(keys.twitter);
-    console.log('tweets')
+    let client = new twitter('./keys.twitter');
+    let twitterUser = process.argv[3]
+    if(!twitterUser){
+        twitterUser = "Stan Lee";
+    }
+    console.log(twitterUser)
+    client.get("statuses/user_timeline/", params, function(error, data, response){
+        if (!error) {
+            for(var i = 0; i < data.length; i++) {
+             
+            }
+        }  else {
+            console.log("Error :"+ error);
+            return;
+        }
+    });
 }
-// spotify
+
+ //spotify
 function spot() {
     let spotify = new Spotify(keys.spotify);
     console.log('spot')
@@ -49,22 +64,20 @@ function movie() {
          } 
     request(`http://www.omdbapi.com/?t=${movieRequest}&y=&plot=short&apikey=922877d0`, function (error, response, body) {
         if (!error && response.statusCode === 200) {
-
-            console.log(
-            "==========================================" + "\r\n" +
-            "Title: " + JSON.parse(body).Title + "\r\n" +
-            "Release Year: " + JSON.parse(body).Year + "\r\n" +
-            "IMDB rating : " + JSON.parse(body).imdbRating + "\r\n" +
-            "Rotten Tomatoe rating : " + JSON.parse(body).Ratings.Value + "\r\n" +
-            "Country flimed in: " + JSON.parse(body).Country + "\r\n" +
-            "Language : " + JSON.parse(body).Language + "\r\n" +
-            "Plot: " + JSON.parse(body).Plot + "\r\n" +
-            "Actors: " + JSON.parse(body).Actors + "\r\n" +
-            "==========================================")
+            console.log("==========================================")
+            console.log("Title: " + JSON.parse(body).Title)
+            console.log("Release Year: " + JSON.parse(body).Year)
+            console.log("IMDB rating : " + JSON.parse(body).imdbRating)
+            console.log("Rotten Tomatoe rating : " + JSON.parse(body).Ratings.Value)
+            console.log("Country flimed in: " + JSON.parse(body).Country)
+            console.log("Language : " + JSON.parse(body).Language)
+            console.log("Plot: " + JSON.parse(body).Plot)
+            console.log("Actors: " + JSON.parse(body).Actors)
+            console.log("==========================================")
         }
     });
 }
 //random text
 function randomTxt() {
-    console.log('txt')
+    console.log('do-what-it-says')
 }
