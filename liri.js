@@ -24,8 +24,8 @@ switch (liri) {
             "1. tweets 'any twitter name' " + "\r\n" +
             "2. spotify 'any song name' " + "\r\n" +
             "3. movie 'any movie name' " + "\r\n" +
-            "4. random." + "\r\n" +
-            "Be sure to put the movie or song name in quotation marks if it's more than one word.");
+            "4. random" + "\r\n")
+            
 }
 
 //functions 
@@ -49,14 +49,18 @@ function movie() {
          } 
     request(`http://www.omdbapi.com/?t=${movieRequest}&y=&plot=short&apikey=922877d0`, function (error, response, body) {
         if (!error && response.statusCode === 200) {
-            console.log("Title: " + JSON.parse(body).Title)
-            console.log("Release Year: " + JSON.parse(body).Year)
-            console.log("IMDB rating : " + JSON.parse(body).imdbRating)
-            console.log("Rotten Tomatoe rating : " + JSON.parse(body).Ratings.Value)
-            console.log("Country flimed in: " + JSON.parse(body).Country)
-            console.log("Language : " + JSON.parse(body).Language)
-            console.log("Plot: " + JSON.parse(body).Plot)
-            console.log("Actors: " + JSON.parse(body).Actors);
+
+            console.log(
+            "==========================================" + "\r\n" +
+            "Title: " + JSON.parse(body).Title + "\r\n" +
+            "Release Year: " + JSON.parse(body).Year + "\r\n" +
+            "IMDB rating : " + JSON.parse(body).imdbRating + "\r\n" +
+            "Rotten Tomatoe rating : " + JSON.parse(body).Ratings.Value + "\r\n" +
+            "Country flimed in: " + JSON.parse(body).Country + "\r\n" +
+            "Language : " + JSON.parse(body).Language + "\r\n" +
+            "Plot: " + JSON.parse(body).Plot + "\r\n" +
+            "Actors: " + JSON.parse(body).Actors + "\r\n" +
+            "==========================================")
         }
     });
 }
