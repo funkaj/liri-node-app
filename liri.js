@@ -42,6 +42,11 @@ function spot() {
 //movies
 function movie() {
     let movieRequest = process.argv[3]
+         if (!process.argv[3]) {
+             movieRequest = 'Mr. Nobody'
+             console.log("If you haven't watched 'Mr. Nobody', then you should: <http://www.imdb.com/title/tt0485947/>")
+             console.log("It's on Netflix!")
+         } 
     request(`http://www.omdbapi.com/?t=${movieRequest}&y=&plot=short&apikey=922877d0`, function (error, response, body) {
         if (!error && response.statusCode === 200) {
             console.log("Title: " + JSON.parse(body).Title)
