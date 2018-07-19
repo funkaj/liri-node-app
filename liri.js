@@ -2,16 +2,17 @@ require("dotenv").config();
 let fs = require('fs')
 let keys = require('./keys.js')
 let twitter = require('twitter')
-let spotify = require('spotify')
+let spotify = require('node-spotify-api')
 let request = require('request')
 let liri = process.argv[2]
+let value = process.argv[3]
 
 switch (liri) {
     case 'tweets':
         tweets();
         break
     case 'spotify':
-        spot();
+        spot(value);
         break
     case 'movie':
         movie();
@@ -31,21 +32,20 @@ switch (liri) {
 //functions 
 //twitter
 function tweets() {
-    let client = new twitter(keys.twitter);
+    let client = new twitter(keys.twitter)
     //let twitterUser = process.argv[3]
     let params = {
         q: '@Jacob96691972',
         count: 20
     };
-    
+
     client.get('statuses/user_timeline', params, function (error, tweets, response) {
-        if (!error && response.statusCode ===200) {
-            
+        if (!error && response.statusCode === 200) {
+
             console.log('Last 20 Tweets:')
             for (i = 0; i < tweets.length; i++) {
-                console.log('==========================================' + '\n' +
-                [i + 1] + '. ' + tweets[i].text +
-                '\nCreated on: ' + tweets[i].created_at)
+                console.log('==========================================' + '\nTweet ' + [i + 1] + '. ' + tweets[i].text +
+                    '\nCreated on: ' + tweets[i].created_at)
             }
         } else {
             console.log(error)
@@ -54,9 +54,26 @@ function tweets() {
 }
 
 //spotify
-function spot() {
-    let spotify = new Spotify(keys.spotify);
-    console.log('spot')
+function spot(value) {
+    if (!value) {
+        value = 'The Sign Ace of Base'
+    }
+    let newSpotify = new spotify(keys.spotify)
+    // Calls Spotify API to retrieve a track.
+    newSpotify.search({
+        type: 'track',
+        query: value
+    }, function (err, data) {
+        if (err) {
+            logOutput.error(err);
+            return
+        }
+        console.log('==========================================' +
+            "\nArtist(s): " + data.tracks.items[0].album.artists[0].name +
+            "\nSong: " + data.tracks.items[0].name +
+            "\nSpotify Preview URL: " + data.tracks.items[0].preview_url +
+            "\nAlbum Name: " + data.tracks.items[0].album.name);
+    });
 }
 //movies
 function movie() {
