@@ -33,20 +33,9 @@ switch (liri) {
 function tweets() {
     let client = new twitter('./keys.twitter');
     let twitterUser = process.argv[3]
-    if(!twitterUser){
-        twitterUser = "Stan Lee";
-    }
-    console.log(twitterUser)
-    client.get("statuses/user_timeline/", params, function(error, data, response){
-        if (!error) {
-            for(var i = 0; i < data.length; i++) {
-             
-            }
-        }  else {
-            console.log("Error :"+ error);
-            return;
-        }
-    });
+  
+  
+    
 }
 
  //spotify
@@ -68,7 +57,7 @@ function movie() {
             console.log("Title: " + JSON.parse(body).Title)
             console.log("Release Year: " + JSON.parse(body).Year)
             console.log("IMDB rating : " + JSON.parse(body).imdbRating)
-            console.log("Rotten Tomatoe rating : " + JSON.parse(body).Ratings.Value)
+            console.log("Rotten Tomatoe rating : " + JSON.parse(body).Ratings[1].Value)
             console.log("Country flimed in: " + JSON.parse(body).Country)
             console.log("Language : " + JSON.parse(body).Language)
             console.log("Plot: " + JSON.parse(body).Plot)
