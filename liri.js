@@ -31,29 +31,26 @@ function runLiri() {
                 "\n4. do-what-it-says")
     }
 }
-
 //functions 
 function bonus() {
     var textFile = 'log';
     fs.appendFile(textFile, log, function (err) {
         if (err) {
             console.log(err);
-        } else {
-            console.log("Content Added!");
-        }
-
+        } 
     });
-
 }
+console.log('==========================================' + 
+'\nLogged');
 //twitter
 function tweets(value) {
     let client = new twitter(keys.twitter)
     //let twitterUser = process.argv[3]
     let params = {
         q: '@Jacob96691972',
-        count: 20
+            count: 20
     };
-
+    
     client.get('statuses/user_timeline', params, function (error, tweets, response) {
         if (!error && response.statusCode === 200) {
             console.log('Last 20 Tweets:')
@@ -85,10 +82,10 @@ function spot(value) {
             return
         }
         log = '\n==========================================' +
-              '\nArtist(s): ' + data.tracks.items[0].album.artists[0].name +
-              '\nSong: ' + data.tracks.items[0].name +
-              '\nSpotify Preview URL: ' + data.tracks.items[0].preview_url +
-              '\nAlbum Name: ' + data.tracks.items[0].album.name
+            '\nArtist(s): ' + data.tracks.items[0].album.artists[0].name +
+            '\nSong: ' + data.tracks.items[0].name +
+            '\nSpotify Preview URL: ' + data.tracks.items[0].preview_url +
+            '\nAlbum Name: ' + data.tracks.items[0].album.name
         console.log(log)
         bonus(log)
     });
@@ -109,7 +106,7 @@ function movie(value) {
                 '\nCountry flimed in: ' + JSON.parse(body).Country +
                 '\nLanguage : ' + JSON.parse(body).Language +
                 '\nPlot: ' + JSON.parse(body).Plot +
-                '\nActors: ' + JSON.parse(body).Actors 
+                '\nActors: ' + JSON.parse(body).Actors
             console.log(log)
             bonus(log)
         }
