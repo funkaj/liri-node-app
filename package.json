@@ -1,0 +1,12 @@
+{
+	"name": "liri-app",
+	"version": "0.1.0",
+	"devDependencies": {
+		"inquirer": "6.2.2"
+	},
+	"dependencies": {
+		"dotenv": "^7.0.0",
+		"node-spotify-api": "^1.0.7",
+		"twitter": "^1.7.1"
+	}
+}
