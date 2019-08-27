@@ -31,22 +31,22 @@ function runLiri() {
 					"\n3. movie-this 'any movie name" +
 					'\n4. do-what-it-says'
 			);
-	};
-};
+	}
+}
 //functions
 function bonus() {
 	const textFile = 'log';
 	fs.appendFile(textFile, log, function(err) {
 		if (err) {
 			console.log(err);
-		};
+		}
 	});
-};
+}
 console.log('==========================================' + '\nLogged');
 //twitter
 function tweets(value) {
 	let client = new twitter(keys.twitter);
-	let twitterUser = process.argv[3]
+	let twitterUser = process.argv[3];
 	let params = {
 		q: twitterUser,
 		count: 20,
@@ -70,12 +70,12 @@ function tweets(value) {
 					tweets[i].created_at;
 				console.log(log);
 				bonus(log);
-			};
+			}
 		} else {
 			console.log(error);
-		};
+		}
 	});
-};
+}
 //spotify
 function spot(value) {
 	if (!value) {
@@ -91,7 +91,7 @@ function spot(value) {
 			if (err) {
 				logOutput.error(err);
 				return;
-			};
+			}
 			log =
 				'\n==========================================' +
 				'\nArtist(s): ' +
@@ -106,7 +106,7 @@ function spot(value) {
 			bonus(log);
 		}
 	);
-};
+}
 //movies
 function movie(value) {
 	if (!value) {
@@ -140,10 +140,10 @@ function movie(value) {
 					JSON.parse(body).Actors;
 				console.log(log);
 				bonus(log);
-			};
+			}
 		}
 	);
-};
+}
 //random text
 function randomTxt() {
 	fs.readFile('./random.txt', 'utf8', function(error, data) {
@@ -155,4 +155,4 @@ function randomTxt() {
 		value = dataArr[1];
 		runLiri(liri, value);
 	});
-};
+}

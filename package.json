@@ -1,7 +1,6 @@
 {
 	"name": "liri-node-app",
 	"version": "1.0.0",
-	"description": "LIRI is a _Language_ Interpretation and Recognition Interface. LIRI will be a command line node app that takes in parameters and gives you back data.\r # Install \r * [Node JS](https://nodejs.org/en/)\r * [NPM](https://www.npmjs.com/)\r * Run NPM install for \r         * Twitter\r         * node-spotify-api\r         * require",
 	"main": "keys.js",
 	"homepage": "https://github.com/funkaj/liri-node-app#readme",
 	"dependencies": {
@@ -12,9 +11,6 @@
 		"require": "^2.4.20",
 		"spotify": "^0.3.0",
 		"twitter": "^1.7.1"
-	},
-	"devDependencies": {
-		"inquirer": "6.2.2"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
