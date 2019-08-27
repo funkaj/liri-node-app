@@ -20,9 +20,9 @@ Create a .env  in the LIRI-NODE-APP file then copy and paste the Keys below.
         TWITTER_ACCESS_TOKEN_KEY=your-access-token-key
         TWITTER_ACCESS_TOKEN_SECRET=your-twitter-access-token-secret
 
-* Get API keys from 
-[Twitter API](https://developer.twitter.com/content/developer-twitter/en.html) 
-[Spotify API](https://developer.spotify.com/)
+## Get API keys from 
+* [Twitter API](https://developer.twitter.com/content/developer-twitter/en.html) 
+* [Spotify API](https://developer.spotify.com/)
 copy and paste replacing the 'your-twitter-consumer-key' with your keys and tokens into the matching 'TWITTER_CONSUMER_KEY, etc ...' in the .env file.
 
 ## Built with/using
